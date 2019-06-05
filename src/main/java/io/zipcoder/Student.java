@@ -32,36 +32,40 @@ public class Student {
     public String getExamScores() {
         StringBuilder output = new StringBuilder();
         output.append("Exam Score:");
-        for(int i = 0; i < examScores.size()-1; i++){
-            output.append("\nExam " + (i+1) + "->" +examScores.get(i));
+        for (int i = 0; i < examScores.size(); i++) {
+            output.append("\nExam " + (i + 1) + "->" + examScores.get(i));
         }
-        System.out.println(output);
+        //System.out.println(output);
 
         return output.toString();
     }
 
-    public Integer getNumberOfExamsTaken(){
+    public Integer getNumberOfExamsTaken() {
         return examScores.size();
     }
 
-    public void addExamScores(Double score){
+    public void addExamScores(Double score) {
         examScores.add(score);
     }
 
-    public void setExamScores(int examNumber, double newScore){
-        examScores.set(examNumber-1, newScore);
+    public void setExamScores(int examNumber, double newScore) {
+        examScores.set(examNumber - 1, newScore);
     }
 
     public Double getAverageExamScore() {
         Double sum = 0.0;
-        for(Double each: examScores){
-            sum =+ each;
+        for (Double each : examScores) {
+            sum += each;
         }
-        return sum/examScores.size();
+        return sum / examScores.size();
     }
 
     @Override
+    public String toString() {
 
-
-
+        return "Student Name: " + firstName + " " + lastName + '\n' +
+                "Average Score: " + getAverageExamScore() + '\n' +
+                getExamScores();
+    }
 }
+
