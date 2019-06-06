@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Classroom {
     ArrayList<Student> students;
+    HashMap grade = new HashMap();
 
     public Classroom(ArrayList<Student> students) {
         this.students = students;
@@ -53,29 +54,45 @@ public class Classroom {
     }
 
 
-    public HashMap getGradeBook(){
-        HashMap grade = new HashMap();
-        ArrayList<Student> gradeOrder = getStudentsByScore();
-        for(int i = 0; i < gradeOrder.size(); i++){
-            if(gradeOrder.get(i).getAverageExamScore() >= 0.1 ){
+    public HashMap getGradeBook(ArrayList<Student> myClass){
+
+        ArrayList<Student> gradeOrder = myClass;
+
+
+
+        int studentsInClass = myClass.size()+1;
+        for(int i = 0; i < myClass.size(); i++){
+
+
+
+
+            int rank10 = (int) Math.ceil(10.0/100.0*studentsInClass);
+            int rank29 = (int) Math.ceil(29.0/100.0*studentsInClass);
+            int rank50 = (int) Math.ceil(50.0/100.0*studentsInClass);
+            int rank89 = (int) Math.ceil(89.0/100.0*studentsInClass);
+
+
+
+
+            if(i+1 <= rank10){
                 grade.put(gradeOrder.get(i), "A");
-                break;
+
             }
-            else if(gradeOrder.get(i).getAverageExamScore() > 0.3){
+            else if(i+1  <= rank29){
                 grade.put(gradeOrder.get(i), "B");
-                break;
+
             }
-            else if(gradeOrder.get(i).getAverageExamScore() > 0.51){
+            else if(i+1  <= rank50){
                 grade.put(gradeOrder.get(i), "C");
-                break;
+
             }
-            else if(gradeOrder.get(i).getAverageExamScore() > 0.9){
+            else if(i+1  <= rank89){
                 grade.put(gradeOrder.get(i), "D");
-                break;
+
             }
             else {
                 grade.put(gradeOrder.get(i), "F");
-                break;
+
             }
         }
 
