@@ -65,7 +65,7 @@ public class Student {
 
         return "Student Name: " + firstName + " " + lastName + '\n' +
                 "Average Score: " + getAverageExamScore() + '\n' +
-                getExamScores();
+                getExamScores()+'\n';
     }
 }
 

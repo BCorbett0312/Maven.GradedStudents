@@ -33,20 +33,13 @@ public class Classroom {
     public void addStudent(Student student){
         students.add(student);
 
-//        for(int i = 0; i < students.length;i++){
-//            if(students == null){
-//                students[i] = student;
-//                break;
-//            }
-//
-//        }
-
     }
 
     public void removeStudent(String firstName, String lastName){
         for(Student each: students){
-            if(firstName.equals(each.getFirstName()) && lastName.equals(each.getLastName())) {
+            if(firstName.contains(each.getFirstName()) && lastName.contains(each.getLastName())) {
                 students.remove(each);
+                break;
             }
 
         }
@@ -54,26 +47,8 @@ public class Classroom {
     }
 
     public ArrayList<Student> getStudentsByScore(){
-        Comparator<Student> avgTestScoreComparator = Comparator.comparing(Student::getAverageExamScore).thenComparing(Student::getLastName);
-
-
-
-        //Comparator<Student> nameComp = Comparator.comparing(Student::getLastName);
-
-
-        //Arrays.sort(students, avgTestScoreComparator);
-        //Arrays.sort(students, nameComp);
-
-//
-//        for (int i = 1; i < students.length-1; i++){
-//            if (students[i].getAverageExamScore() > students[i-1].getAverageExamScore()){
-//                Student temp = students[i-1];
-//                students[i-1] = students[i];
-//                students[i]= temp;
-//                i =1 ;
-//            }
-//        }
-        System.out.println(students);
+        Comparator<Student> avgTestScoreComparator = Comparator.comparing(Student::getAverageExamScore).reversed().thenComparing(Student::getLastName);
+        Collections.sort(students, avgTestScoreComparator);
         return students;
     }
 
