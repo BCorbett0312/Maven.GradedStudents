@@ -53,6 +53,36 @@ public class Classroom {
     }
 
 
+    public HashMap getGradeBook(){
+        HashMap grade = new HashMap();
+        ArrayList<Student> gradeOrder = getStudentsByScore();
+        for(int i = 0; i < gradeOrder.size(); i++){
+            if(gradeOrder.get(i).getAverageExamScore() >= 0.1 ){
+                grade.put(gradeOrder.get(i), "A");
+                break;
+            }
+            else if(gradeOrder.get(i).getAverageExamScore() > 0.3){
+                grade.put(gradeOrder.get(i), "B");
+                break;
+            }
+            else if(gradeOrder.get(i).getAverageExamScore() > 0.51){
+                grade.put(gradeOrder.get(i), "C");
+                break;
+            }
+            else if(gradeOrder.get(i).getAverageExamScore() > 0.9){
+                grade.put(gradeOrder.get(i), "D");
+                break;
+            }
+            else {
+                grade.put(gradeOrder.get(i), "F");
+                break;
+            }
+        }
+
+        return grade;
+
+    }
+
 
 
 }
